@@ -7,11 +7,11 @@ services:
             - ~/Projects/facial-expression-recognition/images/:/fer_model/images/
         ports:
             - 5000:5000
-        command: bash -c "./.venv/bin/python3.8 ./app/main.py"
+        command: bash -c "python ./app/main.py"
     mmr_model:
         image: ghcr.io/sinead-k-doherty/music-mood-recognition:latest
         volumes:
             - ~/Projects/music-mood-recognition/music/:/mmr_model/music/
         ports:
             - 5001:5001
-        command: bash -c "./.venv/bin/python3.8 ./app/main.py"
+        command: bash -c "python ./app/main.py"
