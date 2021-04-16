@@ -1,6 +1,7 @@
 version: "3"
 
 services:
+    # microservices
     fer_model:
         image: ghcr.io/sinead-k-doherty/facial-ex-recognition:latest
         volumes:
@@ -8,6 +9,7 @@ services:
         ports:
             - 5000:5000
         command: bash -c "python ./app/main.py"
+
     mmr_model:
         image: ghcr.io/sinead-k-doherty/music-mood-recognition:latest
         volumes:
@@ -15,3 +17,17 @@ services:
         ports:
             - 5001:5001
         command: bash -c "python ./app/main.py"
+
+
+    # microfrontends
+    mood_mfe_root_config:
+        build: https://github.com/sinead-k-doherty/mood-mfe-root-config.git#main
+        image: root-config
+        volumes:
+            - ~/Projects/mood-mfe-root-config/:/root_config/
+        ports:
+            - 9000:9000
+        command: ['yarn', 'start']
+
+    
+    
