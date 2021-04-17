@@ -28,6 +28,14 @@ services:
         ports:
             - 9000:9000
         command: ['yarn', 'start']
+    mood_mfe_navbar:
+        build: https://github.com/sinead-k-doherty/mood-mfe-navbar.git#main
+        image: navbar
+        volumes:
+            - ~/Projects/mood-mfe-navbar/:/navbar/
+        ports:
+            - 9001:9001
+        command: ['yarn', 'start']
 
     
     
